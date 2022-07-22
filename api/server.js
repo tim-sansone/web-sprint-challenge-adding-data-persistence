@@ -8,7 +8,7 @@ const taskRouter = require('./task/router');
 server.use(express.json())
 server.use('/api/projects', projectRouter);
 server.use('/api/resources', resourceRouter);
-server.use('./api/tasks', taskRouter)
+server.use('/api/tasks', taskRouter)
 
 server.get('/', (req, res) => {
     res.send('Hello from base URL')

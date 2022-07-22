@@ -3,12 +3,10 @@ const db = require('../../data/dbConfig')
 
 const getAll = () => {
     return db('projects').then(projects => {
-        return projects.map(p => {
+        return projects.map(project => {
             return {
-                project_id: p.project_id,
-                project_name: p.project_name,
-                project_description: p.project_description,
-                project_completed: p.project_completed ? true : false
+                ...project,
+                project_completed: project.project_completed ? true : false
             }
         })
     })
@@ -16,12 +14,10 @@ const getAll = () => {
 
 const getById = project_id => {
     return db('projects').where({ project_id }).first()
-        .then(p => {
+        .then(project => {
             return {
-                project_id: p.project_id,
-                project_name: p.project_name,
-                project_description: p.project_description,
-                project_completed: p.project_completed ? true : false
+                ...project,
+                project_completed: project.project_completed ? true : false
             }
         })
 }
