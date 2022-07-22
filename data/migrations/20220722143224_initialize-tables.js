@@ -5,7 +5,7 @@ exports.up = function(knex) {
         tbl.increments('project_id');
         tbl.varchar('project_name', 80).notNullable();
         tbl.varchar('project_description');
-        tbl.boolean('project_completed').defaultTo(0);
+        tbl.boolean('project_completed').defaultTo(false);
     })
     .createTable('resources', tbl => {
         tbl.increments('resource_id');
@@ -16,7 +16,7 @@ exports.up = function(knex) {
         tbl.increments('task_id');
         tbl.varchar('task_description').notNullable();
         tbl.varchar('task_notes');
-        tbl.boolean('task_completed').defaultTo(0);
+        tbl.boolean('task_completed').defaultTo(false);
         tbl.integer('project_id')
             .references('project_id')
             .inTable('projects')
